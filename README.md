@@ -4,7 +4,7 @@ A cross-platform JUCE VST3/AU/Standalone plugin boilerplate.
 
 ## Clone
 
-    git clone --recurse-submodules <your-repo-url>
+    git clone --recurse-submodules https://github.com/arwatkin/bpplugin.git
 
 ## Build
 
