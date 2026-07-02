@@ -1,3 +1,14 @@
+# BPPLUGIN
+
+A cross-platform JUCE VST3/AU/Standalone plugin boilerplate.
+
+## Prerequisites
+
+- CMake 3.22+
+- **Windows**: Visual Studio 2022 (Desktop C++ workload)
+- **macOS**: Xcode + command line tools (`xcode-select --install`)
+- **Linux**: recent GCC/Clang, plus `libasound2-dev libjack-jackd2-dev ladspa-sdk libcurl4-openssl-dev libfreetype6-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libwebkit2gtk-4.1-dev libglu1-mesa-dev mesa-common-dev`
+
 ## Starting a new plugin from this template
 
 ### 1. Clone and rename the folder
@@ -7,7 +18,7 @@
 
 ### 2. Updating JUCE (optional)
 
-JUCE is pinned to a specific tagged release (8.0.14) for build stability. To bump to a newer version:
+JUCE is pinned to a specific tagged release (currently `8.0.14`) for build stability. To bump to a newer version:
 
     cd JUCE
     git fetch --tags
@@ -52,7 +63,8 @@ Find-and-replace across `src/` handles this in one pass in any editor.
 ### 6. Clear the old build cache
 
 CMake caches variables like the project name — if you ran a build before renaming, delete it and start fresh:
-rm -rf build
+
+    rm -rf build
 
 ### 7. Build
 
@@ -61,4 +73,4 @@ rm -rf build
 
 ### 8. Sanity check
 
-Open your DAW, rescan plugins, confirm `PRODUCT_NAME` shows up correctly and under the right manufacturer — this is the tell that steps 2–3 actually took.
+Open your DAW, rescan plugins, confirm `PRODUCT_NAME` shows up correctly and under the right manufacturer — this is the tell that steps 3–4 actually took.
