@@ -2,7 +2,7 @@
 
 ### 1. Clone and rename the folder
 
-    git clone --recurse-submodules <this-repo-url> MyNewPlugin
+    git clone --recurse-submodules https://github.com/arwatkin/bpplugin.git MyNewPlugin
     cd MyNewPlugin
 
 ### 2. Edit CMakeLists.txt — required fields
@@ -30,11 +30,11 @@
 
 The compiler doesn't care whether the class is called `PluginBoilerplateAudioProcessor` or something else — it'll build fine either way. Rename purely so your own codebase reads sensibly:
 
-- `Source/PluginProcessor.h/.cpp`: `PluginBoilerplateAudioProcessor` → `MyNewPluginAudioProcessor`
-- `Source/PluginEditor.h/.cpp`: `PluginBoilerplateAudioProcessorEditor` → `MyNewPluginAudioProcessorEditor`
+- `src/PluginProcessor.h/.cpp`: `PluginBoilerplateAudioProcessor` → `MyNewPluginAudioProcessor`
+- `src/PluginEditor.h/.cpp`: `PluginBoilerplateAudioProcessorEditor` → `MyNewPluginAudioProcessorEditor`
 - Update the matching `#include` guards / references between the two files
 
-Find-and-replace across `Source/` handles this in one pass in any editor.
+Find-and-replace across `src/` handles this in one pass in any editor.
 
 ### 5. Clear the old build cache
 
