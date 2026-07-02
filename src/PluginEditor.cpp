@@ -8,9 +8,6 @@ PluginBoilerplateAudioProcessorEditor::PluginBoilerplateAudioProcessorEditor (Pl
     setResizeLimits (400, 300, 7680, 4320); // usable minimum up to 8K displays
 
     setSize (900, 650);
-
-    addAndMakeVisible (fullscreenButton);
-    fullscreenButton.onClick = [this] { toggleFullScreen(); };
 }
 
 PluginBoilerplateAudioProcessorEditor::~PluginBoilerplateAudioProcessorEditor()
@@ -28,31 +25,4 @@ void PluginBoilerplateAudioProcessorEditor::paint (juce::Graphics& g)
 
 void PluginBoilerplateAudioProcessorEditor::resized()
 {
-    fullscreenButton.setBounds (getWidth() - 130, 10, 110, 28);
-}
-
-void PluginBoilerplateAudioProcessorEditor::toggleFullScreen()
-{
-    auto& displays = juce::Desktop::getInstance().getDisplays();
-
-    if (! isFullScreen)
-    {
-        preFullScreenBounds = getBounds();
-
-        if (auto* display = displays.getDisplayForRect (getScreenBounds()))
-        {
-            auto area = display->userBounds;
-            setSize (juce::roundToInt (area.getWidth()), juce::roundToInt (area.getHeight()));
-
-            isFullScreen = true;
-            fullscreenButton.setButtonText ("Exit Fullscreen");
-        }
-    }
-    else
-    {
-        setSize (preFullScreenBounds.getWidth(), preFullScreenBounds.getHeight());
-
-        isFullScreen = false;
-        fullscreenButton.setButtonText ("Fullscreen");
-    }
 }

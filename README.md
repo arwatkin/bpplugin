@@ -1,8 +1,13 @@
 ## Starting a new plugin from this template
 
-## Updating JUCE
+### 1. Clone and rename the folder
 
-JUCE is pinned to a specific tagged release for build stability. To bump to a newer version:
+    git clone --recurse-submodules https://github.com/arwatkin/bpplugin.git MyNewPlugin
+    cd MyNewPlugin
+
+### 2. Updating JUCE (optional)
+
+JUCE is pinned to a specific tagged release (8.0.14) for build stability. To bump to a newer version:
 
     cd JUCE
     git fetch --tags
@@ -13,12 +18,7 @@ JUCE is pinned to a specific tagged release for build stability. To bump to a ne
 
 Check available tags at https://github.com/juce-framework/JUCE/releases before bumping, and rebuild fully (`rm -rf build`) after switching versions.
 
-### 1. Clone and rename the folder
-
-    git clone --recurse-submodules https://github.com/arwatkin/bpplugin.git MyNewPlugin
-    cd MyNewPlugin
-
-### 2. Edit CMakeLists.txt — required fields
+### 3. Edit CMakeLists.txt — required fields
 
 | Field                                                                                 | What to change it to          | Notes                                                                                                                   |
 | ------------------------------------------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -30,7 +30,7 @@ Check available tags at https://github.com/juce-framework/JUCE/releases before b
 | `PRODUCT_NAME`                                                                        | the plugin's public name      | what shows up in the DAW plugin browser                                                                                 |
 | every `target_sources` / `target_link_libraries` line referencing `PluginBoilerplate` | rename to match new target    | CMake target names must be consistent throughout the file                                                               |
 
-### 3. Edit CMakeLists.txt — plugin type flags
+### 4. Edit CMakeLists.txt — plugin type flags
 
 | Building a...                                              | IS_SYNTH | NEEDS_MIDI_INPUT | NEEDS_MIDI_OUTPUT | IS_MIDI_EFFECT |
 | ---------------------------------------------------------- | -------- | ---------------- | ----------------- | -------------- |
@@ -39,7 +39,7 @@ Check available tags at https://github.com/juce-framework/JUCE/releases before b
 | MIDI effect (arpeggiator, chord gen)                       | FALSE    | TRUE             | TRUE              | TRUE           |
 | Audio effect that reacts to MIDI (e.g. tempo-synced delay) | FALSE    | TRUE             | FALSE             | FALSE          |
 
-### 4. Rename the C++ classes (optional, cosmetic only)
+### 5. Rename the C++ classes (optional, cosmetic only)
 
 The compiler doesn't care whether the class is called `PluginBoilerplateAudioProcessor` or something else — it'll build fine either way. Rename purely so your own codebase reads sensibly:
 
@@ -49,16 +49,16 @@ The compiler doesn't care whether the class is called `PluginBoilerplateAudioPro
 
 Find-and-replace across `src/` handles this in one pass in any editor.
 
-### 5. Clear the old build cache
+### 6. Clear the old build cache
 
 CMake caches variables like the project name — if you ran a build before renaming, delete it and start fresh:
 rm -rf build
 
-### 6. Build
+### 7. Build
 
     cmake -B build
     cmake --build build --config Release
 
-### 7. Sanity check
+### 8. Sanity check
 
 Open your DAW, rescan plugins, confirm `PRODUCT_NAME` shows up correctly and under the right manufacturer — this is the tell that steps 2–3 actually took.
