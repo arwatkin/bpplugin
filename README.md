@@ -1,5 +1,18 @@
 ## Starting a new plugin from this template
 
+## Updating JUCE
+
+JUCE is pinned to a specific tagged release for build stability. To bump to a newer version:
+
+    cd JUCE
+    git fetch --tags
+    git checkout tags/<new-version>
+    cd ..
+    git add JUCE
+    git commit -m "Bump JUCE to <new-version>"
+
+Check available tags at https://github.com/juce-framework/JUCE/releases before bumping, and rebuild fully (`rm -rf build`) after switching versions.
+
 ### 1. Clone and rename the folder
 
     git clone --recurse-submodules https://github.com/arwatkin/bpplugin.git MyNewPlugin
